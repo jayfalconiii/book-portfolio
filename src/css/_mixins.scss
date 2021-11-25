@@ -11,19 +11,17 @@
     font-size: larger;
     color: q.$black;
     text-align: center;
+    text-decoration: underline;
   }
 }
 
-@mixin paperBg($bgColor: white) {
-  background: linear-gradient(
-      92.63deg,
-      rgba(0, 0, 0, 0.3) -55.09%,
-      rgba(0, 0, 0, 0) 100.71%
-    ),
-    repeating-linear-gradient(
-      $bgColor,
-      $bgColor 25px,
-      rgba(145, 152, 229, 0.05) 26px,
-      rgba(145, 152, 229, 0.05) 25px
-    ) !important;
+@mixin paperBg($bgColor: white, $lineColor: q.$black) {
+  background-color: $bgColor !important;
+  background-image: linear-gradient(
+    $lineColor 0.05em,
+    transparent 0.05em
+  ) !important;
+  background-size: 100% 2em !important;
+  position: relative !important;
+  box-shadow: 15px 15px 33px rgba(27, 27, 27, 0.1) !important;
 }

@@ -55,7 +55,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+    ::v-deep {
+        // Erase unecessary padding inside q-img
+        .q-img > div:first-of-type {
+            padding-bottom: 0 !important;
+            background: blue;
+        }
+    }
     .c-header {
         display: flex;
         flex-direction: column-reverse;
@@ -105,28 +112,23 @@ export default {
         &__c-head-pic {
             height: 100%;
         }
-    }
 
-    .c-head-pic__caption {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-        font-weight: 200;
+        .c-head-pic__caption {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            font-weight: 200;
 
-        & > .u-font-praise {
-            margin-bottom: 0;
-            font-size: 3em;
+            & > .u-font-praise {
+                margin-bottom: 0;
+                font-size: 3em;
+            }
         }
-    }
-
-    // Erase unecessary padding inside q-img
-    .q-img :nth-child(1) {
-        padding-bottom: 0 !important;
-    }
+    }    
 
     @media (min-width: $breakpoint-md-min) {
         .c-header {

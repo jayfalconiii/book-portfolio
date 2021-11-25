@@ -11,8 +11,6 @@
     <div
       class="l-layout--right u-box-shadow"
       @wheel.passive="onMouseWheel"
-      @swipedLeft="prevPage"
-      @swipedRight="nextPage"
     >
         <div class="l-layout--right__c-page">
             <TheBack @click="onPageClick"/>
@@ -24,7 +22,7 @@
             <TheAchievements @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheExperiences ref="experiencePage" @click="onPageClick"/>
+            <TheExperiences @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheHeader @onClickOpen="nextPage"/>
@@ -54,9 +52,7 @@ export default {
             pageProgress: 0,
             pageTimeline: null,
             animIsPaused: false,
-            pauseProgress: 0,
-
-            wheelListener: null
+            pauseProgress: 0
         }
     },
     mounted() {
@@ -112,14 +108,12 @@ export default {
             if(this.animIsPaused) return;
 
             this.animIsPaused = true;
-            console.log("Paused at", this.pageProgress);
             this.pauseProgress = this.pageProgress; // Store progress
         },
         playAnimation() {
             if(!this.animIsPaused) return;
 
             this.animIsPaused = false;
-            console.log("Resumed at", this.pauseProgress);
             this.pageProgress = this.pauseProgress; // Retrieve saved progress to resume
         },
         onPageClick(e) {
