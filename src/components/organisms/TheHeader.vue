@@ -10,7 +10,7 @@
                 class="l-head-prof__prof-pic u-box-shadow"
             />
             <p class="l-head-prof__txt-name u-text-shadow">Bienvenido <span class="text-green">"Jay"</span> Falcon III</p>
-            <p class="l-head-prof__txt-role u-font-praise u-text-shadow">Full Stack Developer</p>
+            <p class="l-head-prof__txt-role u-font-praise u-text-shadow">Developer</p>
              <q-btn
                 @click="onClickOpen"
                 class="l-head-prof__more-btn"
@@ -86,7 +86,7 @@ export default {
         }
 
         &__txt-role {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: $green;
         }
 

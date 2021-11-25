@@ -1,18 +1,27 @@
 <template>
   <q-layout view="lhr Lpr lfr" class="p-home">
 
-    <div class="l-layout--left" v-if="$q.screen.gt.xs">
-        <div class="l-watermark">
+    <div class="l-layout--left" v-if="$q.screen.gt.sm">
+        <div class="l-layout--left__l-watermark">
             <div class="l-watermark__c-icon"></div>
             <p class="l-watermark__c-name">Jay Falcon</p>
         </div>
     </div>
 
     <div class="l-layout--right u-box-shadow" ref="foldArea">
-        <div class="l-layout--right__c-second text-center">
+        <div class="l-layout--right__c-page">
+            <TheBack/>
+        </div>
+        <div class="l-layout--right__c-page">
+            <TheSkills/>
+        </div>
+        <div class="l-layout--right__c-page">
+            <TheAchievements/>
+        </div>
+        <div class="l-layout--right__c-page">
             <TheExperiences />
         </div>
-        <div class="l-layout--right__c-first text-center">
+        <div class="l-layout--right__c-page">
             <TheHeader @onClickOpen="nextPage"/>
         </div>
      </div>
@@ -22,12 +31,18 @@
 <script>
 import TheHeader from "@/components/organisms/TheHeader.vue";
 import TheExperiences from "@/components/organisms/TheExperiences.vue";
+import TheAchievements from "@/components/organisms/TheAchievements.vue";
+import TheSkills from "@/components/organisms/TheSkills.vue";
+import TheBack from "@/components/organisms/TheBack.vue";
 
 export default {
     name: "HomePage",
     components: {
         TheHeader,
-        TheExperiences
+        TheExperiences,
+        TheAchievements,
+        TheSkills,
+        TheBack
     },
     data() {
         return {
@@ -40,18 +55,27 @@ export default {
         }
     },
     mounted() {
-        let animations = [
+        let animatables = [
             {
                 rotateY: 180,
-                targets: ".l-layout--right__c-first"
-            },{
+                targets: `.l-layout--right__c-page:nth-of-type(2)`
+            },
+            {
                 rotateY: 180,
-                targets: ".l-layout--right__c-second"
+                targets: `.l-layout--right__c-page:nth-of-type(3)`
+            },
+            {
+                rotateY: 180,
+                targets: `.l-layout--right__c-page:nth-of-type(4)`
+            },
+            {
+                rotateY: 180,
+                targets: `.l-layout--right__c-page:nth-of-type(5)`
             }
-        ];
+        ].reverse();
 
         this.initializeTimeline();
-        this.addAnimations(...animations);
+        this.addAnimations(...animatables);
         this.addWheelEventListener();        
     },
     watch: {
@@ -98,12 +122,12 @@ export default {
         },
         nextPage() {
             if(this.pageProgress < 100) {
-                this.pageProgress += 50;
+                this.pageProgress += 20;
             }            
         },
         prevPage() {
             if(this.pageProgress > 0) {
-                this.pageProgress -= 50;
+                this.pageProgress -= 20;
             }
         }
     }
@@ -126,7 +150,7 @@ export default {
         margin: 0 0 1rem 0;
         z-index: 1;
 
-        .l-watermark {
+        &__l-watermark {
             position: fixed;
             bottom: 0;
         }
@@ -150,17 +174,17 @@ export default {
         position: relative;
         height: 100vh;
         width: 100%;
-
+        height: 36px;
+        
         @media (min-width: $breakpoint-md-min) {
             flex: 4 0;
         }
 
-        &__c-first,
-        &__c-second {
+        &__c-page {
             position: absolute;
             height: 100vh;
             width: 100%;
-            background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), #FFFFFF;
+            // background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), #FFFFFF;
             box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
 
             transform: rotateY(0deg);

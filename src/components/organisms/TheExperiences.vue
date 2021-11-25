@@ -1,8 +1,8 @@
 <template>
-  <div class="c-experiences">
+  <div class="p-experiences u-bg-paper">
       <q-timeline
         :layout="$q.screen.lt.sm ? 'dense': 'loose'"
-        class="c-experience__c-timeline text-black"
+        class="p-experience__c-timeline text-black"
       >
         <q-timeline-entry heading class="u-font-praise u-text-underline u-text-shadow">
             Experiences
@@ -57,31 +57,6 @@ export default {
                     color: "blue",
                 },
                 {
-                    title: "Test",
-                    subtitle: "January 30, 2019",
-                    color: "blue",
-                },
-                {
-                    title: "Test",
-                    subtitle: "January 30, 2019",
-                    color: "blue",
-                },
-                {
-                    title: "Test",
-                    subtitle: "January 30, 2019",
-                    color: "blue",
-                },
-                {
-                    title: "Test",
-                    subtitle: "January 30, 2019",
-                    color: "blue",
-                },
-                {
-                    title: "Test",
-                    subtitle: "January 30, 2019",
-                    color: "blue",
-                },
-                {
                     title: "Next Step",
                     subtitle: "???",
                     color: "green",
@@ -93,10 +68,10 @@ export default {
 </script>
 
 <style lang="scss">
-    .c-experiences {
+    .p-experiences {
         display: flex;
         min-height: 100vh;
         padding: 2rem;
-        background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), #FFFFFF;
+        box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
     }
 </style>
