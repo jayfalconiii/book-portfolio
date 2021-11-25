@@ -1,0 +1,29 @@
+@use "./quasar.variables" as q;
+
+@mixin addPageNumber($pageNo) {
+  &::after {
+    content: $pageNo;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    font-family: "Praise", cursive;
+    font-size: larger;
+    color: q.$black;
+    text-align: center;
+  }
+}
+
+@mixin paperBg($bgColor: white) {
+  background: linear-gradient(
+      92.63deg,
+      rgba(0, 0, 0, 0.3) -55.09%,
+      rgba(0, 0, 0, 0) 100.71%
+    ),
+    repeating-linear-gradient(
+      $bgColor,
+      $bgColor 25px,
+      rgba(145, 152, 229, 0.05) 26px,
+      rgba(145, 152, 229, 0.05) 25px
+    ) !important;
+}

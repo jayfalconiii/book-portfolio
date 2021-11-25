@@ -1,73 +1,11 @@
 // app global css in SCSS form
+@forward "./textUtils";
+@forward "./colorUtils";
+@forward "./shadowUtils";
+
 @import url("https://fonts.googleapis.com/css2?family=Praise&display=swap");
 
 body {
   background-color: $dark-green;
   font-family: "Roboto", serif;
-}
-
-.u-font-praise {
-  font-family: "Praise", cursive !important;
-}
-
-.u-font-roboto {
-  font-family: "Roboto", serif !important;
-}
-
-.u-text-underline {
-  text-decoration: underline !important;
-}
-
-.u-text-left {
-  text-align: left !important;
-}
-
-.u-text-right {
-  text-align: right !important;
-}
-
-.u-box-shadow {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
-}
-
-.u-box-shadow--left {
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) !important;
-}
-
-.u-text-shadow {
-  text-shadow: -3px 3px 4px rgba(0, 0, 0, 0.25) !important;
-}
-
-.u-bg-paper {
-  background: linear-gradient(
-      92.63deg,
-      rgba(0, 0, 0, 0.3) -55.09%,
-      rgba(0, 0, 0, 0) 100.71%
-    ),
-    repeating-linear-gradient(
-      white,
-      white 25px,
-      rgba(145, 152, 229, 0.05) 26px,
-      rgba(145, 152, 229, 0.05) 25px
-    ) !important;
-}
-
-.text-brown {
-  color: $brown !important;
-}
-
-.bg-brown {
-  background-color: $brown !important;
-}
-
-.text-green {
-  color: $green !important;
-}
-
-.bg-green {
-  background-color: $green !important;
-}
-
-.text-black {
-  color: $black !important;
 }

@@ -123,6 +123,11 @@ export default {
         }
     }
 
+    // Erase unecessary padding inside q-img
+    .q-img :nth-child(1) {
+        padding-bottom: 0 !important;
+    }
+
     @media (min-width: $breakpoint-md-min) {
         .c-header {
             flex-direction: row; 

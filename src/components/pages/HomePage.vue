@@ -8,18 +8,23 @@
         </div>
     </div>
 
-    <div class="l-layout--right u-box-shadow" ref="foldArea">
+    <div
+      class="l-layout--right u-box-shadow"
+      @wheel.passive="onMouseWheel"
+      @swipedLeft="prevPage"
+      @swipedRight="nextPage"
+    >
         <div class="l-layout--right__c-page">
-            <TheBack/>
+            <TheBack @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheSkills/>
+            <TheSkills @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheAchievements/>
+            <TheAchievements @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheExperiences />
+            <TheExperiences ref="experiencePage" @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheHeader @onClickOpen="nextPage"/>
@@ -76,7 +81,6 @@ export default {
 
         this.initializeTimeline();
         this.addAnimations(...animatables);
-        this.addWheelEventListener();        
     },
     watch: {
         pageProgress(newValue) {
@@ -90,20 +94,18 @@ export default {
         initializeTimeline(option = { autoplay: false }) {
             this.pageTimeline = this.$anime.timeline(option);
         },
-        addWheelEventListener() {
-            const el = this.$refs.foldArea;
-            this.wheelListener = el.addEventListener("wheel", this.onMouseWheel);
-        },
         onMouseWheel(e) {
             if(e.deltaY < 0 && this.pageProgress >= 0) {
-                this.pageProgress-=10;
+                this.pageProgress-=5;
             } else if(this.pageProgress < 100) {
-                this.pageProgress+=10;
+                this.pageProgress+=3;
             }
         },
         addAnimations(...options) {
             options.forEach(option => {
-                this.pageTimeline.add(option);
+                const offset = option.offset;
+                delete option.offset;
+                this.pageTimeline.add(option, offset);
             });
         },
         pauseAnimation() {
@@ -120,21 +122,29 @@ export default {
             console.log("Resumed at", this.pauseProgress);
             this.pageProgress = this.pauseProgress; // Retrieve saved progress to resume
         },
+        onPageClick(e) {
+            const isRight = e.clientX >= this.$q.screen.width/2;
+            if(!isRight) {
+                this.prevPage();
+            } else {
+                this.nextPage();
+            }
+        },
         nextPage() {
             if(this.pageProgress < 100) {
-                this.pageProgress += 20;
+                this.pageProgress += 100/4;
             }            
         },
         prevPage() {
             if(this.pageProgress > 0) {
-                this.pageProgress -= 20;
+                this.pageProgress -= 100/4;
             }
         }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .p-home {
         position: fixed;
         display: flex;
@@ -184,7 +194,6 @@ export default {
             position: absolute;
             height: 100vh;
             width: 100%;
-            // background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), #FFFFFF;
             box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
 
             transform: rotateY(0deg);
@@ -192,4 +201,6 @@ export default {
             transition: transform 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
         }
     }
+
+   
 </style>

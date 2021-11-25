@@ -1,0 +1,18 @@
+@use "quasar.variables" as q;
+
+.text-brown {
+  color: q.$brown !important;
+}
+.text-green {
+  color: q.$green !important;
+}
+.text-black {
+  color: q.$black !important;
+}
+
+.bg-brown {
+  background-color: q.$brown !important;
+}
+.bg-green {
+  background-color: q.$green !important;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-skills u-bg-paper"></div>
+  <div class="p-skills"></div>
 </template>
 
 <script>
@@ -9,9 +9,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @use "./src/css/mixins" as *;
+
     .p-skills {
+        @include paperBg;
+        @include addPageNumber("3");
         display: flex;
-        min-height: 100vh;
+        height: 100vh;
         padding: 2rem;
         box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
     }
