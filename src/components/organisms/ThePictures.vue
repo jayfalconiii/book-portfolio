@@ -1,19 +1,19 @@
 <template>
-  <div class="p-skills"></div>
+  <div class="p-pictures"></div>
 </template>
 
 <script>
 export default {
-    name: "TheSkills"
+    name: "ThePictures"
 }
 </script>
 
 <style lang="scss" scoped>
     @use "./src/css/mixins" as *;
 
-    .p-skills {
+    .p-pictures {
         @include paperBg;
-        @include addPageNumber("4");
+        @include addPageNumber("3");
         display: flex;
         height: 100vh;
         padding: 2rem;

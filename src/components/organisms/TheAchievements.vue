@@ -85,15 +85,13 @@ export default {
             font-weight: 900;
         }
 
-        &__txt-descr {
-            text-justify: auto;
-            text-align: justify;
-        }
-
         @media (min-width: $breakpoint-sm-min) {
             &__txt-title,
             &__txt-descr {
                 padding: 0 10rem;
+
+                text-justify: auto;
+                text-align: justify;
             }
         }
     }

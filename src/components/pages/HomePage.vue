@@ -11,6 +11,8 @@
     <div
       class="l-layout--right u-box-shadow"
       @wheel.passive="onMouseWheel"
+      v-touch-swipe.mouse.right="prevPage"
+      v-touch-swipe.mouse.left="nextPage"
     >
         <div class="l-layout--right__c-page">
             <TheBack @click="onPageClick"/>
@@ -19,10 +21,13 @@
             <TheSkills @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
+            <ThePictures @click="onPageClick"/>
+        </div>
+        <div class="l-layout--right__c-page">
             <TheAchievements @click="onPageClick"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheExperiences @click="onPageClick"/>
+            <TheExperiences @click="onPageClick" ref="experiencePage"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheHeader @onClickOpen="nextPage"/>
@@ -36,6 +41,7 @@ import TheHeader from "@/components/organisms/TheHeader.vue";
 import TheExperiences from "@/components/organisms/TheExperiences.vue";
 import TheAchievements from "@/components/organisms/TheAchievements.vue";
 import TheSkills from "@/components/organisms/TheSkills.vue";
+import ThePictures from "@/components/organisms/ThePictures.vue";
 import TheBack from "@/components/organisms/TheBack.vue";
 
 export default {
@@ -45,6 +51,7 @@ export default {
         TheExperiences,
         TheAchievements,
         TheSkills,
+        ThePictures,
         TheBack
     },
     data() {
@@ -59,19 +66,26 @@ export default {
         let animatables = [
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(2)`
+                targets: `.l-layout--right__c-page:nth-of-type(2)` // TheSkills
             },
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(3)`
+                targets: `.l-layout--right__c-page:nth-of-type(3)` // ThePictures
             },
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(4)`
+                targets: `.l-layout--right__c-page:nth-of-type(4)` // TheAchievements
             },
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(5)`
+                targets: `.l-layout--right__c-page:nth-of-type(5)`, // TheExperiences
+                changeComplete: ()=>{
+                    this.$refs.experiencePage.$data.propagateWheelEvent = false;
+                }
+            },
+            {
+                rotateY: 180,
+                targets: `.l-layout--right__c-page:nth-of-type(6)` // TheHeader,
             }
         ].reverse();
 
@@ -91,6 +105,10 @@ export default {
             this.pageTimeline = this.$anime.timeline(option);
         },
         onMouseWheel(e) {
+            if(this.$q.platform.is.mobile) {
+                return;
+            }
+
             if(e.deltaY < 0 && this.pageProgress >= 0) {
                 this.pageProgress-=5;
             } else if(this.pageProgress < 100) {
@@ -126,12 +144,12 @@ export default {
         },
         nextPage() {
             if(this.pageProgress < 100) {
-                this.pageProgress += 100/4;
+                this.pageProgress += 100/5;
             }            
         },
         prevPage() {
             if(this.pageProgress > 0) {
-                this.pageProgress -= 100/4;
+                this.pageProgress -= 100/5;
             }
         }
     }
