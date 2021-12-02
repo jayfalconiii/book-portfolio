@@ -15,7 +15,7 @@
   }
 }
 
-@mixin paperBg($bgColor: white, $lineColor: q.$black) {
+@mixin paperBg($bgColor: white, $lineColor: q.$grey) {
   background-color: $bgColor !important;
   background-image: linear-gradient(
     $lineColor 0.05em,

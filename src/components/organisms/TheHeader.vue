@@ -1,5 +1,6 @@
 <template>
   <div class="c-header">
+        <!-- Header Left - Profile Area -->
         <div
           class="l-head-prof"
         >
@@ -11,7 +12,7 @@
             />
             <p class="l-head-prof__txt-name u-text-shadow">Bienvenido <span class="text-green">"Jay"</span> Falcon III</p>
             <p class="l-head-prof__txt-role u-font-praise u-text-shadow">Developer</p>
-             <q-btn
+            <q-btn
                 @click="onClickOpen"
                 class="l-head-prof__more-btn"
                 text-color="brown"
@@ -21,6 +22,8 @@
             >
             </q-btn>
         </div>
+
+        <!-- Header Right - Welcome Area -->
         <div
           class="l-head-pic"
         >
@@ -31,7 +34,7 @@
             >
                 <div class="c-head-pic__caption">
                     <p class="u-font-praise">Hi, I'm <span class="text-green q-ml-sm">Jay!</span></p>
-                    <p>Officia eu veniam tempor et. Est cupidatat elit veniam proident aliqua id occaecat nulla minim nostrud. Amet ad incididunt magna commodo duis aliqua ipsum pariatur reprehenderit ad officia minim sint.</p>
+                    <p>I’m an aspiring software architect who loves to code and learn different technologies while having fun. I created this portfolio to compile my experiences and show my skills in web development. <br><br> I’d love for more feedback to help in my journey, so please feel free to contact me. Also, check out my code in github!</p>
                 </div>
             </q-img>
         </div>
@@ -43,7 +46,7 @@ export default {
     name: "TheHeader",
     data() {
         return {
-            headerPicture: "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+            headerPicture: "https://images.unsplash.com/photo-1528557692780-8e7be39eafab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
             profilePicture: "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80"
         }
     },
@@ -56,9 +59,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    ::v-deep {
+    ::v-deep(.q-img) {
         // Erase unecessary padding inside q-img
-        .q-img > div:first-of-type {
+        & > div:first-of-type {
             padding-bottom: 0 !important;
             background: blue;
         }
@@ -121,7 +124,7 @@ export default {
             height: 100%;
             width: 100%;
             text-align: center;
-            font-weight: 200;
+            font-weight: 300;
 
             & > .u-font-praise {
                 margin-bottom: 0;
