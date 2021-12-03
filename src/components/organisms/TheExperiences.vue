@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @use "./src/css/mixins" as *;
+    @use "~/src/css/mixins" as *;
 
     .p-experiences {
         @include paperBg;

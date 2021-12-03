@@ -42,7 +42,7 @@
 
             <q-img
                 v-if="entry.img"
-                class="u-box-shadow q-mt-lg"
+                class="q-timeline__img u-box-shadow q-mt-lg"
                 :src="entry.img.src"
                 :height="entry.img.height"
                 :width="entry.img.width"
@@ -79,6 +79,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @use "~/src/css/mixins" as *;
+
     .q-timeline {
         &__subtitle {
             margin: -1.3rem 0 0 0;
@@ -97,6 +99,10 @@ export default {
             @media (min-width: $breakpoint-md-min) {
                 width: 80%;
             }
+        }
+
+        &__img {
+            @include paperBg($yellow, $red-5);
         }
 
         & ul {

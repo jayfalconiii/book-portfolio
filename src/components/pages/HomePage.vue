@@ -15,16 +15,16 @@
       v-touch-swipe.mouse.left="nextPage"
     >
         <div class="l-layout--right__c-page">
-            <TheBack @click="onPageClick"/>
+            <TheBack @click="onPageClick" v-if="loadedPages > 3"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheSkills @click="onPageClick"/>
+            <TheSkills @click="onPageClick" v-if="loadedPages > 3"/>
         </div>
         <div class="l-layout--right__c-page">
-            <ThePictures @click="onPageClick"/>
+            <ThePictures @click="onPageClick" v-if="loadedPages > 2"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheAchievements @click="onPageClick"/>
+            <TheAchievements @click="onPageClick" v-if="loadedPages > 2"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheExperiences @click="onPageClick" ref="experiencePage"/>
@@ -37,12 +37,13 @@
 </template>
 
 <script>
-import TheHeader from "@/components/organisms/TheHeader.vue";
-import TheExperiences from "@/components/organisms/TheExperiences.vue";
-import TheAchievements from "@/components/organisms/TheAchievements.vue";
-import TheSkills from "@/components/organisms/TheSkills.vue";
-import ThePictures from "@/components/organisms/ThePictures.vue";
-import TheBack from "@/components/organisms/TheBack.vue";
+import { defineAsyncComponent } from 'vue';
+import TheHeader from '@/components/organisms/TheHeader';
+const TheExperiences = defineAsyncComponent(() => import(/* webpackChunkName: "TheExperiences", webpackPreload: true */ '@/components/organisms/TheExperiences'));
+const TheAchievements = defineAsyncComponent(() => import(/* webpackChunkName: "TheAchievements", webpackPrefetch: true */ '@/components/organisms/TheAchievements'));
+const TheSkills = defineAsyncComponent(() => import(/* webpackChunkName: "TheSkills", webpackPrefetch: true */ '@/components/organisms/TheSkills'));
+const ThePictures = defineAsyncComponent(() => import(/* webpackChunkName: "ThePictures", webpackPrefetch: true */ '@/components/organisms/ThePictures'));
+const TheBack = defineAsyncComponent(() => import(/* webpackChunkName: "TheBack", webpackPrefetch: true */ '@/components/organisms/TheBack'));
 
 export default {
     name: "HomePage",
@@ -59,7 +60,8 @@ export default {
             pageProgress: 0,
             pageTimeline: null,
             animIsPaused: false,
-            pauseProgress: 0
+            pauseProgress: 0,
+            loadedPages: 2
         }
     },
     mounted() {
@@ -80,7 +82,7 @@ export default {
                 rotateY: 180,
                 targets: `.l-layout--right__c-page:nth-of-type(5)`, // TheExperiences
                 changeComplete: ()=>{
-                    this.$refs.experiencePage.$data.propagateWheelEvent = false;
+                    this.$refs.experiencePage[$data].propagateWheelEvent = false;
                 }
             },
             {
@@ -119,7 +121,12 @@ export default {
             options.forEach(option => {
                 const offset = option.offset;
                 delete option.offset;
-                this.pageTimeline.add(option, offset);
+                this.pageTimeline.add({
+                    ...option, 
+                    complete: ()=>{
+                        this.loadedPages++;
+                    }
+                }, offset);
             });
         },
         pauseAnimation() {

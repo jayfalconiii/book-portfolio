@@ -1,15 +1,15 @@
 
-const error404Page = () => import('@/components/pages/Error404.vue');
-const homePage = () => import('@/components/pages/HomePage.vue');
+const Error404 = () => import(/* webpackChunkName: "Error404", webpackPreload: true */ '@/components/pages/Error404.vue');
+const HomePage = () => import(/* webpackChunkName: "HomePage" */ '@/components/pages/HomePage.vue');
 
 const routes = [
   {
     path: '/',
-    component: homePage,
+    component: HomePage,
   },
   {
     path: '/:catchAll(.*)*',
-    component: error404Page
+    component: Error404
   }
 ]
 

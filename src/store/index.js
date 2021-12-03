@@ -1,7 +1,5 @@
-import { store } from 'quasar/wrappers'
-import { createStore } from 'vuex'
-
-import state from "./state"
+import { store } from 'quasar/wrappers';
+import { createStore } from 'vuex';
 
 /*
  * If not building with SSR mode, you can
@@ -14,11 +12,15 @@ import state from "./state"
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
-    modules: {
-      // example
+    state: {
     },
+    actions: {
+    },
+    mutations: {
+    },
+    getter: {
 
-    state,
+    },
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only

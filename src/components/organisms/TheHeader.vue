@@ -9,7 +9,14 @@
                 height="12rem"
                 width="12rem"
                 class="l-head-prof__prof-pic u-box-shadow"
-            />
+            >
+                <template #loading>
+                    <q-skeleton
+                      size="100%"
+                      type="circle"
+                    />
+                </template>
+            </q-img>
             <p class="l-head-prof__txt-name u-text-shadow">Bienvenido <span class="text-green">"Jay"</span> Falcon III</p>
             <p class="l-head-prof__txt-role u-font-praise u-text-shadow">Developer</p>
             <q-btn
@@ -29,9 +36,11 @@
         >
             <q-img
                 :src="headerPicture"
-                no-spinner
                 class="l-head-pic__c-head-pic u-box-shadow--left"
             >
+                <template #loading>
+                    <q-skeleton size="100%" />
+                </template>
                 <div class="c-head-pic__caption">
                     <p class="u-font-praise">Hi, I'm <span class="text-green q-ml-sm">Jay!</span></p>
                     <p>I’m an aspiring software architect who loves to code and learn different technologies while having fun. I created this portfolio to compile my experiences and show my skills in web development. <br><br> I’d love for more feedback to help in my journey, so please feel free to contact me. Also, check out my code in github!</p>
@@ -63,14 +72,13 @@ export default {
         // Erase unecessary padding inside q-img
         & > div:first-of-type {
             padding-bottom: 0 !important;
-            background: blue;
         }
     }
     .c-header {
         display: flex;
         flex-direction: column-reverse;
         height: 100vh;
-        background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), $brown;
+        background: linear-gradient(92.63deg, rgba(0, 0, 0, 0.3) -55.09%, rgba(0, 0, 0, 0) 100.71%), $black-cover;
     }
 
     .l-head-prof {
@@ -83,9 +91,10 @@ export default {
         flex: 1 0;
 
         &__prof-pic {
+            background: white;
             margin-bottom: 1rem;
             border-radius: 50%;
-            z-index: 1;
+            z-index: 2;
         }
 
         &__txt-name {
@@ -111,6 +120,7 @@ export default {
     .l-head-pic {
         position: relative;
         flex: 1.5 0;
+        background: white;
 
         &__c-head-pic {
             height: 100%;
