@@ -21,7 +21,7 @@
             <TheSkills @click="onPageClick" v-if="loadedPages > 3"/>
         </div>
         <div class="l-layout--right__c-page">
-            <ThePictures @click="onPageClick" v-if="loadedPages > 2"/>
+            <ThePictures @click="onPageClick" ref="picturesPage" v-if="loadedPages > 2"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheAchievements @click="onPageClick" v-if="loadedPages > 2"/>
@@ -72,7 +72,10 @@ export default {
             },
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(3)` // ThePictures
+                targets: `.l-layout--right__c-page:nth-of-type(3)`, // ThePictures
+                changeComplete: ()=>{
+                    this.$refs.picturesPage['$data'].propagateWheelEvent = false;
+                }
             },
             {
                 rotateY: 180,
@@ -82,7 +85,7 @@ export default {
                 rotateY: 180,
                 targets: `.l-layout--right__c-page:nth-of-type(5)`, // TheExperiences
                 changeComplete: ()=>{
-                    this.$refs.experiencePage[$data].propagateWheelEvent = false;
+                    this.$refs.experiencePage['$data'].propagateWheelEvent = false;
                 }
             },
             {

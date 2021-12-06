@@ -7,6 +7,7 @@
             height="15rem"
             width="15rem"
             :key="picture['title']"
+            @click="onClick"
         />
     </div>
 </template>
@@ -18,6 +19,11 @@ export default {
         pictures: {
             type: Array,
             required: true
+        }
+    },
+    methods: {
+        onClick(e) {
+            e.stopPropagation();
         }
     }
 }

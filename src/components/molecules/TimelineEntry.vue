@@ -33,7 +33,7 @@
             >{{ entry.description }}</p>
 
             <ul v-if="'projects' in entry && entry.projects.length > 0">
-                <ProjectEntry
+                <ProjectItem
                   v-for="entry,i of entry.projects"
                   :entry="entry"
                   :key="i"
@@ -54,13 +54,13 @@
 </template>
 
 <script>
-import ProjectEntry from "@/components/atoms/ProjectEntry";
+import ProjectItem from "@/components/atoms/ProjectItem";
 import { colors } from 'quasar';
 
 export default {
     name: "TimelineEntry",
     components: {
-        ProjectEntry
+        ProjectItem
     },
     props: {
         side: {

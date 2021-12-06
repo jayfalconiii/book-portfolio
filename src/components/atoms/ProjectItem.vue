@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    name: "ProjectEntry",
+    name: "ProjectItem",
     props: {
         entry: {
             required: true,

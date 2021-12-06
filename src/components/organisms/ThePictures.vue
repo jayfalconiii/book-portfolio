@@ -1,11 +1,16 @@
 <template>
-  <div class="p-pictures">
-      <div class="p-pictures__images" @click="onClick" v-if="pictures.length > 0">
+  <div
+      class="p-pictures"
+      @wheel="onWheel"
+      @scroll="onScroll"
+  >
+      <div class="p-pictures__images" v-if="pictures.length > 0">
         <CarouselImages
             v-if="$q.screen.xs"
             :pictures="pictures"
+            @click="onClick"
         />
-        <PictureEntry
+        <PicturesList
             v-else
             :pictures="pictures"
         />
@@ -21,13 +26,13 @@
 <script>
 import { defineAsyncComponent } from 'vue';
 const CarouselImages = defineAsyncComponent(() => import(/* webpackChunkName: "CarouselImages", webpackPrefetch: true */ '@/components/molecules/CarouselImages'));
-const PictureEntry = defineAsyncComponent(() => import(/* webpackChunkName: "PictureEntry", webpackPrefetch: true */ '@/components/molecules/PictureEntry'));
+const PicturesList = defineAsyncComponent(() => import(/* webpackChunkName: "PicturesList", webpackPrefetch: true */ '@/components/molecules/PicturesList'));
 
 export default {
     name: "ThePictures",
     components: {
         CarouselImages,
-        PictureEntry
+        PicturesList
     },
     computed: {
         pictures() {
@@ -44,12 +49,37 @@ export default {
     },
     data() {
         return {
-            slide: 1
+            slide: 1,
+            propagateWheelEvent: false
         }
     },
     methods: {
         onClick(e) {
             e.stopPropagation();
+        },
+        onWheel(e) {
+            console.log(e.target.scrollHeight, e.target.clientHeight);
+            if(Math.abs(e.target.scrollTop) <= 0) {
+                this.propagateWheelEvent = true;
+            }
+            if(!this.propagateWheelEvent) {
+                e.stopPropagation();
+            }
+        },
+        onScroll(e) {
+            if(this.$q.platform.is.mobile) {
+                return;
+            }
+
+            let element = e.target;
+            if (element.scrollHeight - Math.abs(element.scrollTop) === element.clientHeight || Math.abs(element.scrollTop) <= 0)
+            {
+                setTimeout(() => {
+                    this.propagateWheelEvent = true;
+                }, 1000);
+            } else {
+                this.propagateWheelEvent = false;
+            }
         }
     }
 }
@@ -68,6 +98,7 @@ export default {
         text-align: center;
         box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
         padding: 0;
+        overflow: scroll;
 
         @media (min-width: $breakpoint-sm-min) {
             padding: 2rem;

@@ -42,7 +42,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @use "~/src/css/mixins" as *;
+
     .c-carousel-images {
+        @include paperBg($yellow, $red-5);
         width: 100%;
     }
 </style>
