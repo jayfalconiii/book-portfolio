@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Front-End",
+    "skills": [
+      { "title": "Vue Js", "profeciency": 2 },
+      { "title": "React Js", "profeciency": 1 },
+      { "title": "Vuex", "profeciency": 2 },
+      { "title": "Vue Router", "profeciency": 2 },
+      { "title": "Quasar", "profeciency": 1 },
+      { "title": "Angular", "profeciency": 1 },
+      { "title": "Vuetify", "profeciency": 1 },
+      { "title": "Three Js", "profeciency": 1 },
+      { "title": "Bootstrap", "profeciency": 1 },
+      { "title": "CSS", "profeciency": 2 },
+      { "title": "SCSS", "profeciency": 1 },
+      { "title": "HTML", "profeciency": 2 },
+      { "title": "Javascript", "profeciency": 2 }
+    ]
+  },
+  {
+    "name": "Back-End",
+    "skills": [
+      { "title": "Express", "profeciency": 1 },
+      { "title": "Workbox", "profeciency": 1 },
+      { "title": "SW", "profeciency": 1 },
+      { "title": "Mongo DB", "profeciency": 1 },
+      { "title": "Node JS", "profeciency": 2 },
+      { "title": "Firebase", "profeciency": 1 }
+    ]
+  },
+  {
+    "name": "Testing",
+    "skills": [
+      { "title": "Jest", "profeciency": 2 },
+      { "title": "Selenium", "profeciency": 1 },
+      { "title": "Appium", "profeciency": 1 },
+      { "title": "TestProject.io", "profeciency": 2 }
+    ]
+  },
+  {
+    "name": "Others",
+    "skills": [
+      { "title": "Typescript", "profeciency": 1 },
+      { "title": "Webpack", "profeciency": 1 },
+      { "title": "Java", "profeciency": 2 },
+      { "title": "C#(.NET Framework)", "profeciency": 2 },
+      { "title": "C/C++", "profeciency": 1 }
+    ]
+  }
+]

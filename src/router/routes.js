@@ -5,7 +5,11 @@ const HomePage = () => import(/* webpackChunkName: "HomePage" */ '@/components/p
 const routes = [
   {
     path: '/',
-    component: HomePage,
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    component: HomePage
   },
   {
     path: '/:catchAll(.*)*',

@@ -8,7 +8,7 @@
         <CarouselImages
             v-if="$q.screen.xs"
             :pictures="pictures"
-            @click="onClick"
+            @click.stop
         />
         <PicturesList
             v-else
@@ -54,15 +54,8 @@ export default {
         }
     },
     methods: {
-        onClick(e) {
-            e.stopPropagation();
-        },
         onWheel(e) {
-            console.log(e.target.scrollHeight, e.target.clientHeight);
-            if(Math.abs(e.target.scrollTop) <= 0) {
-                this.propagateWheelEvent = true;
-            }
-            if(!this.propagateWheelEvent) {
+            if(!this.propagateWheelEvent && Math.abs(e.target.scrollTop) > 0) {
                 e.stopPropagation();
             }
         },
@@ -93,6 +86,7 @@ export default {
         @include addPageNumber("3");
         display: flex;
         flex-direction: column;
+        min-height: 100vh;
         height: 100vh;
         padding: 2rem;
         text-align: center;

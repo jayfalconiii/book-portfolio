@@ -64,7 +64,7 @@ export default {
             loadedPages: 2
         }
     },
-    mounted() {
+    mounted() {        
         let animatables = [
             {
                 rotateY: 180,
@@ -86,11 +86,12 @@ export default {
                 targets: `.l-layout--right__c-page:nth-of-type(5)`, // TheExperiences
                 changeComplete: ()=>{
                     this.$refs.experiencePage['$data'].propagateWheelEvent = false;
+                    
                 }
             },
             {
                 rotateY: 180,
-                targets: `.l-layout--right__c-page:nth-of-type(6)` // TheHeader,
+                targets: `.l-layout--right__c-page:nth-of-type(6)`, // TheHeader
             }
         ].reverse();
 
