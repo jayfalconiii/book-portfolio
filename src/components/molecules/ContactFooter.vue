@@ -2,7 +2,7 @@
     <div class="footer q-mt-lg">
         <div class="flex q-my-sm">
             <q-icon name="fab fa-github" color="white" size="2rem" />
-            <a href="#" class="q-ml-lg q-my-auto q-pa-none text-white">sample@github.com</a>
+            <a href="https://github.com/jayfalconiii/portfolio" class="q-ml-lg q-my-auto q-pa-none text-white">https://github.com/jayfalconiii/portfolio</a>
         </div>
         <div class="flex q-my-sm">
             <q-icon name="fab fa-linkedin-in" color="white" size="2rem" />
