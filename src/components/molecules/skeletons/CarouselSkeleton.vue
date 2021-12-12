@@ -2,7 +2,6 @@
     <q-carousel
         model-value="skeleton"
         class="bg-none text-black"
-        height="80%"
         control-color="black"
         arrows
         infinite

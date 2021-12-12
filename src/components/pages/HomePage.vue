@@ -15,7 +15,7 @@
       v-touch-swipe.mouse.left="nextPage"
     >
         <div class="l-layout--right__c-page">
-            <TheBack @click="onPageClick" v-if="loadedPages > 3"/>
+            <TheBack @click="onPageClick" @gotoFirst="closeBook" v-if="loadedPages > 3"/>
         </div>
         <div class="l-layout--right__c-page">
             <TheSkills @click="onPageClick" v-if="loadedPages > 3"/>
@@ -86,7 +86,6 @@ export default {
                 targets: `.l-layout--right__c-page:nth-of-type(5)`, // TheExperiences
                 changeComplete: ()=>{
                     this.$refs.experiencePage['$data'].propagateWheelEvent = false;
-                    
                 }
             },
             {
@@ -162,6 +161,9 @@ export default {
             if(this.pageProgress > 0) {
                 this.pageProgress -= 100/5;
             }
+        },
+        closeBook() {
+            this.pageProgress = -25;
         }
     }
 }

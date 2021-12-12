@@ -58,7 +58,7 @@ export default {
             return data.default;
         },
         onWheel(e) {
-            if(!this.propagateWheelEvent) {
+            if(!this.propagateWheelEvent && !this.loading) {
                 e.stopPropagation();
             }
         },
