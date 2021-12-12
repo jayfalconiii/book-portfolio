@@ -103,7 +103,9 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Dialog'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -147,9 +149,9 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
-        description: `A Quasar Framework app`,
+        name: `Jay Portfolio`,
+        short_name: `Jay Portfolio`,
+        description: `Portfolio built by Bienvenido Falcon III.`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

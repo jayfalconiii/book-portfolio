@@ -1,5 +1,5 @@
 <template>
-    <q-form @submit.prevent="onSubmit">
+    <q-form @submit.prevent="onSubmit" ref="contactForm">
         <p class="q-form__label u-font-praise text-white q-ma-none">Name:</p>
         <q-input
             class="q-mb-sm"
@@ -76,9 +76,11 @@ export default {
             const emailPattern = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
             return emailPattern.test(val) || 'Invalid email!';
         },
-        onSubmit(form) {
-            // TODO: Send to my email
-            console.log("Submit", form);
+        onSubmit() {
+            this.$q.dialog({
+                title: "Men at work!",
+                message: "I apologize for the inconvenience. The contact form is currently in progress. Please feel free to contact me using the email address attached. Thank you for understanding!"
+            });
         }
     }
 }

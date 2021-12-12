@@ -1,8 +1,8 @@
 <template>
   <div
     class="p-experiences"
-    @wheel="onWheel"
-    @scroll="onScroll"
+    @wheel.passive="onWheel"
+    @scroll.passive="onScroll"
   >
       <q-timeline
         :layout="$q.screen.lt.sm ? 'dense': 'loose'"

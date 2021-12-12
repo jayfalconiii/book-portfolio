@@ -18,9 +18,10 @@
 </template>
 
 <script>
-import SkillEntry from "@/components/molecules/SkillEntry";
+import { defineAsyncComponent } from 'vue';
+const SkillEntry = defineAsyncComponent(() => import(/* webpackChunkName: "SkillEntry", webpackPreload: true */ '@/components/molecules/SkillEntry'));
+const SkillLegend = defineAsyncComponent(() => import(/* webpackChunkName: "SkillLegend", webpackPreload: true */ '@/components/atoms/SkillLegend'));
 import SkillSkeleton from "@/components/molecules/skeletons/SkillSkeleton";
-import SkillLegend from "@/components/atoms/SkillLegend";
 
 export default {
     name: "TheSkills",

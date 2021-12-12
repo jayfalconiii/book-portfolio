@@ -43,7 +43,7 @@
                 </template>
                 <div class="c-head-pic__caption">
                     <p class="u-font-praise">Hi, I'm <span class="text-green q-ml-sm">Jay!</span></p>
-                    <p>I’m an aspiring software architect who loves to code and learn different technologies while having fun. I created this portfolio to compile my experiences and show my skills in web development. <br><br> I’d love for more feedback to help in my journey, so please feel free to contact me. Also, check out my code in github!</p>
+                    <p>I’m an aspiring software architect who loves to code and learn different technologies while having fun. I created this portfolio to compile my experiences and show my skills in web development. <br><br> I’d love for more feedback to help in my journey, so please feel free to <span :style="{ textDecoration: 'underline', cursor: 'pointer' }" @click="$emit('gotoContact')">contact me</span>. Also, check out my code in github!</p>
                 </div>
             </q-img>
         </div>
@@ -51,12 +51,13 @@
 </template>
 
 <script>
+
 export default {
     name: "TheHeader",
     data() {
         return {
-            headerPicture: "https://images.unsplash.com/photo-1528557692780-8e7be39eafab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-            profilePicture: "https://images.unsplash.com/photo-1528892952291-009c663ce843?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80"
+            headerPicture: "https://drive.google.com/uc?id=1AjR_Q7zUC-HZjt7NnzLnHWeTRDuck5GL",
+            profilePicture: "https://drive.google.com/uc?id=11mP1uPDlI4oA68h3r_T3pZ1aMGnDiQBu"
         }
     },
     methods: {

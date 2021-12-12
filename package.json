@@ -1,13 +1,13 @@
 {
   "name": "resume-app",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
-  "author": "Bienvenido Falcon III <bienvenido.falcon@awsys-i.com>",
+  "description": "Portfolio built by Bienvenido Falcon III.",
+  "productName": "Jay Portfolio",
+  "author": "Bienvenido Falcon III <bienvenido.falconiii@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "icon": "icongenie generate -i app-icon.png --skip-trim --theme-color 6e9f66"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

@@ -3,7 +3,12 @@
 
     <div class="l-layout--left" v-if="$q.screen.gt.sm">
         <div class="l-layout--left__l-watermark">
-            <div class="l-watermark__c-icon"></div>
+             <q-img
+                class="l-watermark__c-icon"
+                src="https://drive.google.com/uc?id=1sZYYwv65xzEdhSoLMNsXsl3jlSUZEsm6"
+                height="10rem"
+                width="10rem"
+            />
             <p class="l-watermark__c-name">Jay Falcon</p>
         </div>
     </div>
@@ -30,7 +35,7 @@
             <TheExperiences @click="onPageClick" ref="experiencePage"/>
         </div>
         <div class="l-layout--right__c-page">
-            <TheHeader @onClickOpen="nextPage"/>
+            <TheHeader @onClickOpen="nextPage" @gotoContact="gotoBack"/>
         </div>
      </div>
   </q-layout>
@@ -164,6 +169,9 @@ export default {
         },
         closeBook() {
             this.pageProgress = -25;
+        },
+        gotoBack() {
+            this.pageProgress = 100;
         }
     }
 }
@@ -191,8 +199,6 @@ export default {
         }
 
         .l-watermark__c-icon {
-            height: 10rem;
-            width: 10rem;
             background: $warning;
         }
 

@@ -1,12 +1,12 @@
 <template>
     <div class="c-pictures">
         <q-img
-            v-for="picture of pictures"
+            v-for="picture,i of pictures"
             class="c-pictures__picture"
-            :src="picture['src']"
+            :src="picture"
             height="15rem"
             width="15rem"
-            :key="picture['title']"
+            :key="i"
             @click="onClick"
         />
     </div>

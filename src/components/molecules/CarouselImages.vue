@@ -5,6 +5,8 @@
         height="100%"
         transition-prev="slide-right"
         transition-next="slide-left"
+        control-type="flat"
+        control-color="white"
         arrows
         swipeable
         animated
@@ -13,10 +15,10 @@
         keep-alive
     >
         <q-carousel-slide
-          v-for="picture in pictures"
-          :key="picture['title']"
-          :name="picture['title']"
-          :img-src="picture['src']"
+          v-for="picture,i in pictures"
+          :key="i"
+          :name="i"
+          :img-src="picture"
         />
     </q-carousel>
 </template>
@@ -32,11 +34,8 @@ export default {
     },
     data() {
         return {
-            slide: ""
+            slide: 0
         }
-    },
-    created() {
-        this.slide = this.pictures[0].title;
     }
 }
 </script>
