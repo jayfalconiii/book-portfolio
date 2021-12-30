@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     async fetchAchievements() {
-      return this.$api.get("json/achievements.json");
+      return this.$api.get("api/achievements.json");
     },
   },
 };

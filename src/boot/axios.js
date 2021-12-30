@@ -7,7 +7,10 @@ import axios from "axios";
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const BASE_URL = "http://localhost:3000/";
+
+// const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "https://book-portfolio-backend.herokuapp.com/";
+
 const api = axios.create({ baseURL: BASE_URL });
 
 export default boot(({ app }) => {

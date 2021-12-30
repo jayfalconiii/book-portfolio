@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     async fetchSkillList() {
-      return this.$api.get("json/skills.json");
+      return this.$api.get("api/skills.json");
     },
     onWheel(e) {
       if (!this.propagateWheelEvent) {
