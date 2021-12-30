@@ -19,7 +19,7 @@
       <TimelineEntry
         v-else
         v-for="(entry, i) of timelineEntries"
-        :key="i"
+        :key="entry.id"
         :side="i % 2 || i === timelineEntries.length - 1 ? 'right' : 'left'"
         :entry="entry"
       />
@@ -34,6 +34,7 @@ const TimelineEntry = defineAsyncComponent(() =>
     /* webpackChunkName: "TimelineEntry", webpackPreload: true */ "@/components/molecules/TimelineEntry"
   )
 );
+
 import TimelineSkeleton from "@/components/molecules/skeletons/TimelineSkeleton.vue";
 
 export default {
@@ -51,7 +52,8 @@ export default {
   },
   async mounted() {
     try {
-      this.timelineEntries = await this.fetchTimelineEntries();
+      const { data } = await this.fetchTimelineEntries();
+      this.timelineEntries = data;
     } catch (e) {
       throw e;
     } finally {
@@ -59,12 +61,8 @@ export default {
     }
   },
   methods: {
-    async fetchTimelineEntries() {
-      // TODO: Add backend, currently using stubs
-      const data = await import(
-        /* webpackChunkName: "experiences-stub" */ "@/assets/stubs/experiences.json"
-      );
-      return data.default;
+    fetchTimelineEntries() {
+      return this.$api.get("experiences.json");
     },
     onWheel(e) {
       if (!this.propagateWheelEvent && !this.loading) {

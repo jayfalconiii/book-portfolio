@@ -52,7 +52,8 @@ export default {
   },
   async created() {
     try {
-      this.achievements = await this.fetchAchievements();
+      const { data } = await this.fetchAchievements();
+      this.achievements = data;
       this.slide = this.achievements[0].id;
     } catch (e) {
       throw e;
@@ -62,11 +63,7 @@ export default {
   },
   methods: {
     async fetchAchievements() {
-      // TODO: Add backend, currently using stubs
-      const data = await import(
-        /* webpackChunkName: "achievements-stub" */ "@/assets/stubs/achievements.json"
-      );
-      return data.default;
+      return this.$api.get("achievements.json");
     },
   },
 };

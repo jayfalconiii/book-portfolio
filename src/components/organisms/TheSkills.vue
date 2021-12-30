@@ -17,7 +17,7 @@
           class="q-py-md"
           v-for="entry of skillList"
           :entry="entry"
-          :key="entry.name"
+          :key="entry.id"
         />
         <SkillLegend class="q-my-lg" />
       </template>
@@ -55,7 +55,8 @@ export default {
   },
   async mounted() {
     try {
-      this.skillList = await this.fetchSkillList();
+      const { data } = await this.fetchSkillList();
+      this.skillList = data;
     } catch (e) {
       throw e;
     } finally {
@@ -64,11 +65,7 @@ export default {
   },
   methods: {
     async fetchSkillList() {
-      // TODO: Add backend, currently using stubs
-      const data = await import(
-        /* webpackChunkName: "skills-stub" */ "@/assets/stubs/skills.json"
-      );
-      return data.default;
+      return this.$api.get("skills.json");
     },
     onWheel(e) {
       if (!this.propagateWheelEvent) {
