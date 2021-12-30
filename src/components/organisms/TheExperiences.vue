@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     fetchTimelineEntries() {
-      return this.$api.get("experiences.json");
+      return this.$api.get("json/experiences.json");
     },
     onWheel(e) {
       if (!this.propagateWheelEvent && !this.loading) {
