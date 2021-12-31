@@ -1,0 +1,26 @@
+{
+    "name": "portoflio-backend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon app.c8a6643a6088f0ec817d.js",
+        "build": "NODE_ENV=production webpack",
+        "dev": "webpack"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "express": "~4.16.1",
+        "helmet": "^4.6.0",
+        "http-errors": "~1.6.3",
+        "jade": "~1.11.0",
+        "morgan": "~1.9.1",
+        "nodemailer": "^6.7.2",
+        "nodemon": "^2.0.15",
+        "webpack-node-externals": "^3.0.0"
+    },
+    "devDependencies": {
+        "webpack": "^5.65.0",
+        "webpack-cli": "^4.9.1"
+    }
+}

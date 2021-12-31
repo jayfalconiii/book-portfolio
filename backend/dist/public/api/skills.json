@@ -1,0 +1,54 @@
+[
+    {
+        "id": "818abfc2-4788-49ab-9fb8-4b104758bf59",
+        "name": "Front-End",
+        "skills": [
+            { "title": "Vue Js", "profeciency": 2 },
+            { "title": "React Js", "profeciency": 1 },
+            { "title": "Vuex", "profeciency": 2 },
+            { "title": "Vue Router", "profeciency": 2 },
+            { "title": "Quasar", "profeciency": 1 },
+            { "title": "Angular", "profeciency": 1 },
+            { "title": "Vuetify", "profeciency": 1 },
+            { "title": "Three Js", "profeciency": 1 },
+            { "title": "Bootstrap", "profeciency": 1 },
+            { "title": "CSS", "profeciency": 2 },
+            { "title": "SCSS", "profeciency": 1 },
+            { "title": "HTML", "profeciency": 2 },
+            { "title": "Javascript", "profeciency": 2 }
+        ]
+    },
+    {
+        "id": "2659aa49-cfcb-4f87-945a-4ad95c4bab1d",
+        "name": "Back-End",
+        "skills": [
+            { "title": "Express", "profeciency": 1 },
+            { "title": "Workbox", "profeciency": 1 },
+            { "title": "SW", "profeciency": 1 },
+            { "title": "Mongo DB", "profeciency": 1 },
+            { "title": "Node JS", "profeciency": 2 },
+            { "title": "Firebase", "profeciency": 1 }
+        ]
+    },
+    {
+        "id": "fc7d30e6-e3f5-4887-8eb2-57f5dad3d8b2",
+        "name": "Testing",
+        "skills": [
+            { "title": "Jest", "profeciency": 2 },
+            { "title": "Selenium", "profeciency": 1 },
+            { "title": "Appium", "profeciency": 1 },
+            { "title": "TestProject.io", "profeciency": 2 }
+        ]
+    },
+    {
+        "id": "47862847-3e9a-4b22-96af-1c1fe2a9845e",
+        "name": "Others",
+        "skills": [
+            { "title": "Typescript", "profeciency": 1 },
+            { "title": "Webpack", "profeciency": 1 },
+            { "title": "Java", "profeciency": 2 },
+            { "title": "C#(.NET Framework)", "profeciency": 2 },
+            { "title": "C/C++", "profeciency": 1 }
+        ]
+    }
+]

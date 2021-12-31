@@ -1,0 +1,22 @@
+[
+    {
+        "id": "c42d0de1-fd23-4c01-82bd-ec1020b29c52",
+        "title": "Research Paper: “Using Wearable Heart Rate Device To Develop A Stress Level Index”",
+        "descr": "Using ReactJS and Java Android to create a heart rate monitoring application that communicates with the Xiaomi Mi-Band via bluetooth LTE; back-end uses firbase cloud functions and realtime database. Data is used for creating a stress level index."
+    },
+    {
+        "id": "bd01f34a-a185-4f39-bdd4-3b6845f29ecb",
+        "title": "Java SE8 OCA Certification",
+        "descr": "Java SE8 Oracle Certified Associate Certification"
+    },
+    {
+        "id": "af4deeb4-9251-4221-9677-fbc9c4b37384",
+        "title": "Associate R&D Engineer",
+        "descr": "Associate Research and Development Engineer"
+    },
+    {
+        "id": "2180c17d-5506-40a0-92b9-6dde4e28158a",
+        "title": "Senior Associate R&D Engineer",
+        "descr": "Senior Associate Research and Development Engineer"
+    }
+]
