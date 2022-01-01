@@ -10,6 +10,7 @@
         Achievements
       </p>
       <q-carousel
+        ref="carousel"
         v-if="!loading"
         v-model="slide"
         class="bg-none text-black"
@@ -20,13 +21,12 @@
         padding
         arrows
         infinite
-        @click.stop
       >
         <q-carousel-slide
           v-for="achievement of achievements"
+          class="column no-wrap flex-center"
           :key="achievement.id"
           :name="achievement.id"
-          class="column no-wrap flex-center"
         >
           <p class="p-achievements__txt-title">{{ achievement.title }}</p>
           <p class="p-achievements__txt-descr">{{ achievement.descr }}</p>
@@ -65,6 +65,13 @@ export default {
   },
   async created() {
     await this.fetchAchievements();
+
+    // Stop propogation click events on carousel chevrons
+    this.$refs.carousel.$el.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
   },
   methods: {
     async fetchAchievements() {

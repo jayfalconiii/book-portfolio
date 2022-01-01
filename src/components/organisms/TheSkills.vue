@@ -117,6 +117,7 @@ export default {
 
   .l-skills {
     width: 100%;
+    height: fit-content;
   }
 
   &__txt-skills {

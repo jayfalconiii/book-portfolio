@@ -151,16 +151,11 @@ export default {
     width: 100%;
     text-align: center;
     font-weight: 300;
-    font-size: 80%;
+    font-size: min(2vw, 80%);
 
     & > .u-font-praise {
       margin-bottom: 0;
       font-size: 3em;
-    }
-
-    @media (max-height: 600px) and (max-width: $breakpoint-sm-max) {
-      font-size: 65%;
-      justify-content: start;
     }
   }
 }

@@ -6,7 +6,7 @@
   >
     <q-timeline
       :layout="$q.screen.lt.sm ? 'dense' : 'loose'"
-      class="p-experience__c-timeline text-black"
+      class="p-experiences__c-timeline text-black"
       v-if="!isError"
     >
       <q-timeline-entry
@@ -109,5 +109,10 @@ export default {
   box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
   overflow: scroll;
   scroll-behavior: smooth;
+
+  &__c-timeline {
+    height: fit-content;
+    margin-bottom: 0.5rem;
+  }
 }
 </style>
