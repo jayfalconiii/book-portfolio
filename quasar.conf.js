@@ -142,13 +142,13 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: `Jay Portfolio`,
-        short_name: `Jay Portfolio`,
-        description: `Portfolio built by Bienvenido Falcon III.`,
+        name: `Book Portfolio - Jay Falcon`,
+        short_name: `Book Portfolio`,
+        description: `Book Portfolio built by Bienvenido Falcon III.`,
         display: "standalone",
         orientation: "portrait",
-        background_color: "#ffffff",
-        theme_color: "#027be3",
+        background_color: "#6b5744",
+        theme_color: "#3f4d35",
         icons: [
           {
             src: "icons/icon-128x128.png",
