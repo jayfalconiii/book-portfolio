@@ -7,6 +7,7 @@
     <q-timeline
       :layout="$q.screen.lt.sm ? 'dense' : 'loose'"
       class="p-experience__c-timeline text-black"
+      v-if="!isError"
     >
       <q-timeline-entry
         heading
@@ -24,6 +25,7 @@
         :entry="entry"
       />
     </q-timeline>
+    <ErrorBlock @onClick="fetchTimelineEntries" v-else />
   </div>
 </template>
 
@@ -48,21 +50,25 @@ export default {
       timelineEntries: [],
       propagateWheelEvent: false,
       loading: true,
+      isError: false,
     };
   },
   async mounted() {
-    try {
-      const { data } = await this.fetchTimelineEntries();
-      this.timelineEntries = data;
-    } catch (e) {
-      throw e;
-    } finally {
-      this.loading = false;
-    }
+    await this.fetchTimelineEntries();
   },
   methods: {
-    fetchTimelineEntries() {
-      return this.$api.get("api/experiences.json");
+    async fetchTimelineEntries() {
+      this.loading = true;
+      this.isError = false;
+
+      try {
+        const { data } = await this.$api.get("api/experiences.json");
+        this.timelineEntries = data;
+        this.loading = false;
+      } catch (e) {
+        this.isError = true;
+        throw e;
+      }
     },
     onWheel(e) {
       if (!this.propagateWheelEvent && !this.loading) {
@@ -101,7 +107,7 @@ export default {
   height: 100%;
   padding: 2rem;
   box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
+  overflow: scroll;
   scroll-behavior: smooth;
 }
 </style>

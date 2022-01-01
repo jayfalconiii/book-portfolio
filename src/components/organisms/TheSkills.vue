@@ -1,6 +1,6 @@
 <template>
   <div class="p-skills" @wheel.passive="onWheel" @scroll.passive="onScroll">
-    <div class="l-skills">
+    <div class="l-skills" v-if="!isError">
       <p
         class="
           p-skills__txt-skills
@@ -22,6 +22,7 @@
         <SkillLegend class="q-my-lg" />
       </template>
     </div>
+    <ErrorBlock @onClick="fetchSkillList" v-else />
   </div>
 </template>
 
@@ -51,21 +52,25 @@ export default {
       skillList: [],
       loading: true,
       propagateWheelEvent: false,
+      isError: false,
     };
   },
   async mounted() {
-    try {
-      const { data } = await this.fetchSkillList();
-      this.skillList = data;
-    } catch (e) {
-      throw e;
-    } finally {
-      this.loading = false;
-    }
+    await this.fetchSkillList();
   },
   methods: {
     async fetchSkillList() {
-      return this.$api.get("api/skills.json");
+      this.loading = true;
+      this.isError = false;
+
+      try {
+        const { data } = await this.$api.get("api/skills.json");
+        this.skillList = data;
+        this.loading = false;
+      } catch (e) {
+        this.isError = true;
+        throw e;
+      }
     },
     onWheel(e) {
       if (!this.propagateWheelEvent) {
@@ -104,7 +109,7 @@ export default {
   height: 100%;
   padding: 2rem;
   box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
+  overflow: scroll;
 
   @media (min-width: $breakpoint-sm-min) {
     padding: 3rem 5rem;
