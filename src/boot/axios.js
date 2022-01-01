@@ -8,8 +8,10 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-const BASE_URL = "http://localhost:3000/";
-// const BASE_URL = "https://book-portfolio-backend.herokuapp.com/";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://book-portfolio-backend.herokuapp.com/"
+    : "http://localhost:3000/";
 
 const api = axios.create({ baseURL: BASE_URL });
 
